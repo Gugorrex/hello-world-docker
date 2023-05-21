@@ -8,7 +8,7 @@ on:
 env:
   IMAGE_NAME: hello-world-docker
   GHCR_USERNAME_AUTH: ${{ github.actor }}
-  GHCR_REPO: gugorrex
+  GHCR_REPO: gugorrex/hello-world-docker
   GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
