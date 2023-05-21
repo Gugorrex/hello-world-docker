@@ -1,0 +1,15 @@
+version: '3'
+services:
+  hello-world-docker:
+    image: ghcr.io/gugorrex/hello-world-docker/hello-world-docker:latest
+    ports: # left port is host, right port is container
+      - "80:80"
+    restart: always
+
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    # The volumes section maps the Docker socket from the host (/var/run/docker.sock) to the Watchtower container.
+    # This volume mapping allows Watchtower to communicate with the Docker daemon on the host and monitor and update other containers.
+    restart: always

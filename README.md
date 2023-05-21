@@ -69,3 +69,29 @@ latest:
 ```
 docker pull ghcr.io/gugorrex/hello-world-docker/hello-world-docker:latest
 ```
+
+## Auto Push to GHCR
+Add a workflow to GitHub (see .github/workflows/docker-build-push.yml).
+This builds and pushes the docker image every time when a push to the master branch happens.
+
+## (Manual) Run / Install Watchtower
+```
+docker run -d --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower
+```
+
+## Deploy the container with Watchtower
+Deploy your container with Watchtower to enable automatic updates. 
+You can use Docker Compose to define the deployment configuration.
+(see docker-compose.yml)
+Watchtower can also be deployed with the same docker-compose.yml
+to manage and deploy all the containers together as a cohesive unit.
+
+To run the setup:
+```
+docker-compose up -d
+```
+
+To stop everything:
+```
+docker-compose down
+```
