@@ -8,7 +8,7 @@ on:
 env:
   IMAGE_NAME: hello-world-docker
   GHCR_USERNAME_AUTH: ${{ github.actor }}
-  GHCR_USERNAME_REPO: ${{ secrets.REPO_USERNAME }}
+  GHCR_REPO: gugorrex
   GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
         run: echo "${{ env.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ env.GHCR_USERNAME_AUTH }} -p "${{ env.GHCR_TOKEN }}"
 
       - name: Build and tag Docker image
-        run: docker build -t ghcr.io/${{ env.GHCR_USERNAME_REPO }}/${{ env.IMAGE_NAME }}:${{ github.sha }} .
+        run: docker build -t ghcr.io/${{ env.GHCR_REPO }}/${{ env.IMAGE_NAME }}:${{ github.sha }} .
 
       - name: Push Docker image to GHCR
-        run: docker push ghcr.io/${{ env.GHCR_USERNAME_REPO }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+        run: docker push ghcr.io/${{ env.GHCR_REPO }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
