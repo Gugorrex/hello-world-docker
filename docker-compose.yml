@@ -12,4 +12,5 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     # The volumes section maps the Docker socket from the host (/var/run/docker.sock) to the Watchtower container.
     # This volume mapping allows Watchtower to communicate with the Docker daemon on the host and monitor and update other containers.
+    command: --interval 30s # Update interval set to 30 seconds
     restart: always
